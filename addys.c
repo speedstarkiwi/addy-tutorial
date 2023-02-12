@@ -39,3 +39,9 @@ r_getscheduler_t r_getscheduler = (r_getscheduler_t)(getscheduler_addy);
 
 using r_typename_t = int(typename_conv*)(uintptr_t a1, int a2);
 r_typename_t r_typename = (r_typename_t)(typename_addy);
+
+using r_print_t = uintptr_t(print_conv*)(int a1, const char* a2);
+r_print_t r_print = (r_print_t)(print_addy);
+
+using r_pushvfstring_t = int(pushvfstring_conv*)(std::uintptr_t rl, const char* fmt, ...);
+r_pushvfstring_t r_print = (r_pushvfstring_t)(print_addy);
