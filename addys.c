@@ -43,5 +43,5 @@ r_typename_t r_typename = (r_typename_t)(typename_addy);
 using r_print_t = uintptr_t(print_conv*)(int a1, const char* a2);
 r_print_t r_print = (r_print_t)(print_addy);
 
-using r_pushvfstring_t = int(pushvfstring_conv*)(std::uintptr_t rl, const char* fmt, ...);
-r_pushvfstring_t r_print = (r_pushvfstring_t)(print_addy);
+using r_pushvfstring_t = int(pushvfstring_conv*)(std::uintptr_t a1, const char* a2, ...);
+r_pushvfstring_t r_pushvfstring = (r_pushvfstring_t)(pushvfstring_addy);
