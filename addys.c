@@ -22,6 +22,10 @@ uintptr_t typename_addy = ASLR(NULL);
 uintptr_t print_addy = ASLR(NULL);
 #define print_conv __cdecl
 
+uintptr_t pseudo2_addy = ASLR(NULL);
+#define pseudo2_ccv __fastcall
+#define pseudo2_aob "8B C1 81 FA ?? ?? ?? ?? 74 ?? 56"
+
 uintptr_t pushvfstring_addy = ASLR(NULL);
 #define pushvfstring_conv "none" 
 
