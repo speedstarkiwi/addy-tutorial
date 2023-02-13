@@ -3,6 +3,7 @@
 #include <string>
 int ASLR(uintptr_t addy) { return addy - 0x400000 + reinterpret_cast<uintptr_t>(GetModuleHandleA(NULL)); }
 int RASLR(uintptr_t addy) { return addy + 0x400000; } 
+int TOP = 12, BASE = 8;
 
 uintptr_t luavmload_addy = ASLR(NULL);
 #define luavmload_conv __fastcall
@@ -58,3 +59,9 @@ r_pseudo2_t r_pseudo2 = (r_pseudo2_t)(pseudo2_addy);
 
 using r_spawn_t = int(spawn_ccv*)(uintptr_t a1);
 r_spawn_t r_spawn = (r_spawn_t)(spawn_addy);
+
+int r_gettop(uintptr_t a1)
+{
+  return (*(uintptr_t*)(a1 + TOP) - *(uintptr_t*)(a1 + BASE)) >> (int)4;
+}
+
