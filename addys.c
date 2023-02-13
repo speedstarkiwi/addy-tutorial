@@ -1,4 +1,4 @@
-//addys posted for version-b467400c8f8e4097
+//dumped with speedstarsdumper :)
 
 #include <string>
 int ASLR(uintptr_t addy) { return addy - 0x400000 + reinterpret_cast<uintptr_t>(GetModuleHandleA(NULL)); }
@@ -22,12 +22,15 @@ uintptr_t typename_addy = ASLR(NULL);
 uintptr_t print_addy = ASLR(NULL);
 #define print_conv __cdecl
 
+uintptr_t pushvfstring_addy = ASLR(NULL);
+#define pushvfstring_conv "none" 
+
 uintptr_t pseudo2_addy = ASLR(NULL);
 #define pseudo2_ccv __fastcall
 #define pseudo2_aob "8B C1 81 FA ?? ?? ?? ?? 74 ?? 56"
 
-uintptr_t pushvfstring_addy = ASLR(NULL);
-#define pushvfstring_conv "none" 
+uintptr_t spawn_addy = ASLR(NULL);
+#define spawn_ccv __cdecl 
 
 using r_vm_load_t = uintptr_t(luavmload_conv*)(uintptr_t a1, std::string* a2, const char* a3, int a4);
 r_vm_load_t r_vm_load = (r_vm_load_t)(luavmload_addy);
@@ -49,3 +52,9 @@ r_print_t r_print = (r_print_t)(print_addy);
 
 using r_pushvfstring_t = int(pushvfstring_conv*)(std::uintptr_t a1, const char* a2, ...);
 r_pushvfstring_t r_pushvfstring = (r_pushvfstring_t)(pushvfstring_addy);
+
+using r_pseudo2_t = uintptr_t*(pseudo2_ccv*)(uintptr_t a1, int a2);
+r_pseudo2_t r_pseudo2 = (r_pseudo2_t)(pseudo2_addy);
+
+using r_spawn_t = int(spawn_ccv*)(uintptr_t a1);
+r_spawn_t r_spawn = (r_spawn_t)(spawn_addy);
