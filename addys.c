@@ -1,9 +1,35 @@
-//dumped with speedstarsdumper :)
+//these are the addys for this update!
+//addys dumped at: Sat Feb 18 10:52:50 2023
 
 #include <string>
 int ASLR(uintptr_t addy) { return addy - 0x400000 + reinterpret_cast<uintptr_t>(GetModuleHandleA(NULL)); }
+int RASLR(uintptr_t addy) { return addy + 0x400000; }
+
+uintptr_t taskdefer_addy = ASLR(0x7E0790);
+#define taskdefer_conv __cdecl
+
+uintptr_t getstate_addy = ASLR(0x7A50C0);
+#define getstate_conv __thiscall
+
+uintptr_t getscheduler_addy = ASLR(0xB14E80);
+#define getscheduler_addy __cdecl
+
+uintptr_t print_addy = ASLR(0x1034AB0);
+#define print_ccv __cdecl
+
+uintptr_t pushvfstring_addy = ASLR(0x18A0070);
+#define pushvfstring_ccv "none"
+
+//successfully dumped 5 addys!
+//dumped with speedstarsdumper by speedstarskiwi
+
+
+//these arent addys, these are a base of your exploit!
+//if u dont know what addys needed or forgot, enjoy!
+#include <string>
+int ASLR(uintptr_t addy) { return addy - 0x400000 + reinterpret_cast<uintptr_t>(GetModuleHandleA(NULL)); }
 int RASLR(uintptr_t addy) { return addy + 0x400000; } 
-int TOP = 12, BASE = 8;
+int TOP = 0x0000, BASE = 0x0000;
 
 uintptr_t luavmload_addy = ASLR(NULL);
 #define luavmload_conv __fastcall
